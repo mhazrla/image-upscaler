@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "local-image-upscaler"
+version = "0.1.0"
+description = "Local image upscaling CLI with custom Lanczos scaling"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.10"
+dependencies = ["Pillow>=12.3.0,<13"]
+keywords = ["image", "upscale", "resize", "lanczos", "cli"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Topic :: Multimedia :: Graphics :: Graphics Conversion",
+]
+
+[project.urls]
+Homepage = "https://github.com/mhazrla/image-upscaler"
+Repository = "https://github.com/mhazrla/image-upscaler"
+Issues = "https://github.com/mhazrla/image-upscaler/issues"
+
+[project.scripts]
+image-upscaler = "upscale:main"
+
+[tool.setuptools]
+py-modules = ["upscale"]
