@@ -23,7 +23,7 @@ A small, privacy-friendly command-line tool for enlarging images by 2x, 4x, or a
 
 ## Installation
 
-Clone the repository and install it in a virtual environment:
+Clone the repository and create a virtual environment:
 
 ```bash
 git clone https://github.com/mhazrla/image-upscaler.git
@@ -41,13 +41,21 @@ Activate the environment:
 source .venv/bin/activate
 ```
 
-Install the command:
+### Option 1: install as a command (recommended)
 
 ```bash
 python -m pip install -e .
 ```
 
-You can now run `image-upscaler` from the activated environment. Alternatively, install only the dependency with `python -m pip install -r requirements.txt` and use `python upscale.py` in the examples below.
+You can now run `image-upscaler` in the examples below from the activated environment.
+
+### Option 2: install just the dependency from `requirements.txt`
+
+```bash
+python -m pip install -r requirements.txt
+```
+
+This installs only the Pillow dependency, without installing the package itself. Run the tool with `python upscale.py` and use that in place of `image-upscaler` in the examples below.
 
 ## Usage
 
