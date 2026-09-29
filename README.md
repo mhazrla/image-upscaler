@@ -114,6 +114,14 @@ image-upscaler --help
 - Existing output is rejected unless `--overwrite` is used. Input files are always protected.
 - Exit code `0` means success, `1` means one or more images failed, and `2` means the arguments were invalid. Batch processing continues when one image fails.
 
+## Resource usage
+
+Everything runs locally and offline with no GPU or model downloads. Processing is single-threaded and CPU-bound, so time spent scales with the number of output pixels. A 4x upscale produces 16x the pixels of the input.
+
+Memory is the main cost. During a single upscale the image is held in memory several times at once (decoded, EXIF-oriented, converted, resized, and optionally sharpened for the unsharp mask). Peak usage is therefore a few times the size of the output bitmap. An RGBA output image takes 4 bytes per pixel, so an 8000x6000 result is roughly 190 MB per in-memory copy. Because of the 80-megapixel output limit, peak memory can still exceed 1 GB on large inputs.
+
+Batch processing handles one image at a time, so memory does not accumulate across files. To reduce peak usage, use a smaller scale or skip `--sharpen`. Output as WebP or JPEG instead of PNG to keep files smaller on disk.
+
 ## Development
 
 Install the project, then run the test suite:
